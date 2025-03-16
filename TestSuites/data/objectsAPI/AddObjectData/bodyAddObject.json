@@ -1,0 +1,54 @@
+{
+  "HappyCase": {
+    "name": "Iphone 16 Pro Max",
+    "data": {
+      "year": 2021,
+      "price": 1849.99,
+      "CPU model": "Snap Dragon gen 2",
+      "Hard disk size": "1 TB"
+    }
+  },
+  "MissingName": {
+    "data": {
+      "year": 2022,
+      "price": 1800,
+      "CPU model": "Intel xeon",
+      "Hard disk size": "2 TB"
+    }
+  },
+  "MissingData": {
+    "name": "Samsung S25"
+  },
+  "MissingYear": {
+    "name": "Samsung S20 Ultra",
+    "data": {
+      "price": 1999,
+      "CPU model": "AMD",
+      "Hard disk size": "512 GB"
+    }
+  },
+  "MissingPrice": {
+    "name": "Macbook Pro M4",
+    "data": {
+      "year": 2023,
+      "CPU model": "Exynos",
+      "Hard disk size": "256 GB"
+    }
+  },
+  "MissingCPUModel": {
+    "name": "Mac studio",
+    "data": {
+      "year": 2024,
+      "price": 7890,
+      "Hard disk size": "128 GB"
+    }
+  },
+  "MissingHardDiskSize": {
+    "name": "Monitor Dell Ultra",
+    "data": {
+      "year": 2025,
+      "price": 543.6,
+      "CPU model": "Apple M1"
+    }
+  }
+}
