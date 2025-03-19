@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.Map;
 
 @ScenarioScoped
 public class HandleJson {
@@ -26,16 +28,16 @@ public class HandleJson {
         return new JSONObject(content);
     }
 
-    //Handle parse from Json String to Json Object
-    public JSONObject handleParseFromJsonObjectStringToJsonObject(String jsonObjectString)
+    //Convert from Json String to Json Object
+    public JSONObject convertStringToJsonObject(String content)
     {
             // Phân tích cú pháp JSON
-            JSONObject jsonObject = new JSONObject(jsonObjectString);
+            JSONObject jsonObject = new JSONObject(content);
             return  jsonObject;
     }
 
-    //Handle parse from Json Array to Json Object
-    public JSONObject handleParseFromJsonArrayStringToJsonObject(String JsonArrayString, int indexJsonObject) {
+    //Convert from Json Array to Json Object
+    public JSONObject getObjectInJsonArray(String JsonArrayString, int indexJsonObject) {
         // Phân tích cú pháp chuỗi JSON thành JSONArray
         JSONArray jsonArray = new JSONArray(JsonArrayString);
 
@@ -49,6 +51,22 @@ public class HandleJson {
             jsonObject = currentJsonObject;
         }
         return jsonObject;
+    }
+
+
+    //Kiểm tra nếu một String có rỗng hay không:
+    public boolean isStringEmpty(String str) {
+        return str != null && str.isEmpty();
+    }
+
+    //Kiểm tra nếu một JSONObject có rỗng hay không:
+    public boolean isJsonObjectEmpty(JSONObject jsonObject) {
+        return jsonObject == null || jsonObject.keySet().isEmpty();
+    }
+
+    //Kiểm tra nếu một JSONArray có rỗng hay không:
+    public boolean isJsonArrayEmpty(JSONArray jsonArray) {
+        return jsonArray == null || jsonArray.length() == 0;
     }
 
 }

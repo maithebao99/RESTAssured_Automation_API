@@ -29,7 +29,7 @@ public class GetObjectAPISteps {
 
     Response response;
 
-    @Then("Invoke api get object")
+    @Then("Receive data object when invoke api get object")
     public void sendRequestGetObject()
     {
         response = RestAssured.given().spec(getObjectAPI.initRequest()).when().get();
@@ -44,7 +44,7 @@ public class GetObjectAPISteps {
         String responseString = response.asString();
 
         //Lấy phần tử đầu tiên trong danh sách khi get object by id
-        JSONObject responseObject = handleJson.handleParseFromJsonArrayStringToJsonObject(responseString, 0);
+        JSONObject responseObject = handleJson.getObjectInJsonArray(responseString, 0);
 
         String idObject = responseObject.getString("id");
         Assert.assertEquals(idObject, objectModel.getId());

@@ -13,6 +13,7 @@ public class ObjectModel {
 
     private String name;
     private JSONObject dataObject;
+    private JSONObject response;
 
     private String id;
 }

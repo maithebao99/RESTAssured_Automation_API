@@ -12,4 +12,6 @@ public class Path {
     private final String pathAddObject = "/objects";
 
     private final String pathGetObject = "/objects";
+
+    private final String pathUpdateObject = "/objects/";
 }
