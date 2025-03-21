@@ -1,20 +1,21 @@
-package stepDefinitions.ObjectsAPISteps;
+package StepDefinitions.ObjectsAPISteps;
 
+import Utilities.Constant;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import model.ObjectModel;
+import Model.ObjectModel;
 import org.json.JSONObject;
-import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
-import request.objectsAPI.AddObjectAPI;
-import utilities.HandleJson;
+import Request.ObjectsAPI.AddObjectAPI;
+import Utilities.HandleJson.ConvertToJson;
+import Utilities.HandleJson.JsonChecker;
+import Utilities.HandleJson.JsonParser;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -23,8 +24,6 @@ import java.util.Map;
 @ScenarioScoped
 public class AddObjectAPISteps {
 
-    private final int statusCodeSuccess = 200;
-
     @Inject
     AddObjectAPI addObjectAPI;
 
@@ -32,7 +31,16 @@ public class AddObjectAPISteps {
     ObjectModel objectModel;
 
     @Inject
-    HandleJson handleJson;
+    JsonParser jsonParser;
+
+    @Inject
+    JsonChecker jsonChecker;
+
+    @Inject
+    ConvertToJson convertToJson;
+
+    @Inject
+    Constant constant;
 
     Response response;
 
@@ -46,22 +54,21 @@ public class AddObjectAPISteps {
     @When("Create a new object when invoke api add object")
     public void sendRequestAddObject() throws IOException {
         response = request.when().post();
-        System.out.printf(response.asPrettyString());
-        Assert.assertEquals(response.statusCode(), statusCodeSuccess);
+        System.out.println(response.asPrettyString());
+        Assert.assertEquals(response.statusCode(), constant.getStatusCodeSuccess());
 
     }
 
-    @Then("Verify response data and body request Add Object API")
+    @Then("Verify response data and body Add Object API")
     public void verifyResponseData()
     {
         //Convert response to json object
-        String stringResponse = response.asString();
-        JSONObject jsonResponse = new JSONObject(stringResponse);
+        JSONObject jsonResponse = convertToJson.convertResponseToJsonObject(response);
 
-        Assert.assertTrue(!handleJson.isJsonObjectEmpty(jsonResponse));
+        Assert.assertTrue(!jsonChecker.isJsonObjectEmpty(jsonResponse));
 
         Map<String, Object> responseMap = new HashMap<>();
-        handleJson.parseJsonToMap(jsonResponse, responseMap);
+        jsonParser.parseJsonObjectToMap(jsonResponse, responseMap);
         //Save respone to object model
         objectModel.setResponse(responseMap);
 

@@ -1,12 +1,10 @@
-package model;
+package Model;
 
 import io.cucumber.guice.ScenarioScoped;
 import lombok.Getter;
 import lombok.Setter;
-import org.json.JSONObject;
 
 import java.util.Map;
-import java.util.Objects;
 
 @ScenarioScoped
 @Getter

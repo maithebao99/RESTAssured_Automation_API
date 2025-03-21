@@ -1,4 +1,4 @@
-package request.objectsAPI;
+package Request.ObjectsAPI;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.restassured.builder.RequestSpecBuilder;
@@ -12,9 +12,11 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
-import model.ObjectModel;
+import Model.ObjectModel;
 import org.json.JSONObject;
-import utilities.*;
+import Utilities.*;
+import Utilities.HandleFile.ReadFile;
+import Utilities.HandleJson.JsonParser;
 
 @Getter
 @Setter
@@ -22,7 +24,10 @@ import utilities.*;
 public class AddObjectAPI {
 
     @Inject
-    HandleJson handleJson;
+    JsonParser jsonParser;
+
+    @Inject
+    ReadFile readFile;
 
     @Inject
     Path path;
@@ -41,13 +46,13 @@ public class AddObjectAPI {
         //Get json file from path file
         File file = new File("TestSuites/data/objectsAPI/AddObjectData/bodyAddObject.json");
         //Handle to Json String
-        JSONObject jsonObject = handleJson.readFileToJsonObject(file, Charset.defaultCharset());
+        JSONObject jsonObject = readFile.readFileToJsonObject(file, Charset.defaultCharset());
 
         //Handle Json String to Json Object
         JSONObject bodyJsonObject = jsonObject.getJSONObject(caseBody);
 
         Map<String, Object> bodyMap = new HashMap<>();
-        handleJson.parseJsonToMap(bodyJsonObject, bodyMap);
+        jsonParser.parseJsonObjectToMap(bodyJsonObject, bodyMap);
         objectModel.setBody(bodyMap);
 
         //Handle Json Object to Json String and save to body

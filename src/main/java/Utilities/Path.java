@@ -1,4 +1,4 @@
-package utilities;
+package Utilities;
 
 import io.cucumber.guice.ScenarioScoped;
 import lombok.Getter;

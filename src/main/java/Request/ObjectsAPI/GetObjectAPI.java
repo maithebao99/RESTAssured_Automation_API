@@ -1,11 +1,11 @@
-package request.objectsAPI;
+package Request.ObjectsAPI;
 
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
-import model.ObjectModel;
-import utilities.Path;
+import Model.ObjectModel;
+import Utilities.Path;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +29,12 @@ public class GetObjectAPI {
         param.put("id", objectModel.getId());
     }
 
+    private void setParam(String id)
+    {
+        param = new HashMap<>();
+        param.put("id", id);
+    }
+
     private void setHeader()
     {
         header = new HashMap<>();
@@ -39,6 +45,19 @@ public class GetObjectAPI {
     public RequestSpecification initRequest()
     {
         setParam();
+        setHeader();
+        request = new RequestSpecBuilder()
+                .setBaseUri(path.getBaseURL())
+                .setBasePath(path.getPathGetObject())
+                .addQueryParams(param)
+                .addHeaders(header)
+                .build();
+        return request;
+    }
+
+    public RequestSpecification initRequest(String id)
+    {
+        setParam(id);
         setHeader();
         request = new RequestSpecBuilder()
                 .setBaseUri(path.getBaseURL())

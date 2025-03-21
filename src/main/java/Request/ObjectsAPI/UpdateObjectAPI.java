@@ -1,31 +1,24 @@
-package request.objectsAPI;
+package Request.ObjectsAPI;
 
+import Utilities.HandleJson.ConvertToJson;
+import Utilities.HandleJson.JsonParser;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
-import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
-import model.ObjectModel;
-import org.json.JSONArray;
+import Model.ObjectModel;
 import org.json.JSONObject;
-import utilities.HandleJson;
-import utilities.Path;
+import Utilities.Path;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 @ScenarioScoped
 public class UpdateObjectAPI {
     private Map<String, String> header;
     private String body;
     private RequestSpecification request;
-
-    @Inject
-    HandleJson handleJson;
 
     @Inject
     Path path;
@@ -35,6 +28,9 @@ public class UpdateObjectAPI {
 
     @Inject
     AddObjectAPI addObjectAPI;
+
+    @Inject
+    JsonParser jsonParser;
 
 
     private void setHeader()
@@ -46,8 +42,11 @@ public class UpdateObjectAPI {
 
     private void setBody(JSONObject bodyJsonObject) throws IOException {
         changeValues(bodyJsonObject);
-
         body = bodyJsonObject.toString();
+
+        Map<String, Object> mapBody = new HashMap<>();
+        jsonParser.parseJsonObjectToMap(bodyJsonObject, mapBody);
+        objectModel.setBody(mapBody);
     }
 
     public void changeValues(JSONObject jsonObject) {
