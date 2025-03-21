@@ -44,23 +44,14 @@ public class AddObjectAPI {
         JSONObject jsonObject = handleJson.readFileToJsonObject(file, Charset.defaultCharset());
 
         //Handle Json String to Json Object
-        JSONObject expectJsonObject = jsonObject.getJSONObject(caseBody);
+        JSONObject bodyJsonObject = jsonObject.getJSONObject(caseBody);
 
-        if(expectJsonObject.has("name"))
-        {
-            //Hanle save body to "ObjectModel" Class
-            String name = expectJsonObject.getString("name");
-            objectModel.setName(name);
-        }
-
-        if(expectJsonObject.has("data"))
-        {
-            JSONObject dataObject = expectJsonObject.getJSONObject("data");
-            objectModel.setDataObject(dataObject);
-        }
+        Map<String, Object> bodyMap = new HashMap<>();
+        handleJson.parseJsonToMap(bodyJsonObject, bodyMap);
+        objectModel.setBody(bodyMap);
 
         //Handle Json Object to Json String and save to body
-        body = expectJsonObject.toString();
+        body = bodyJsonObject.toString();
     }
 
     private void setHeader()

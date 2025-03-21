@@ -9,8 +9,11 @@ import model.ObjectModel;
 import org.json.JSONObject;
 import org.testng.Assert;
 import request.objectsAPI.UpdateObjectAPI;
+import utilities.HandleJson;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @ScenarioScoped
 public class UpdateObjectAPISteps {
@@ -25,12 +28,22 @@ public class UpdateObjectAPISteps {
     @Inject
     ObjectModel objectModel;
 
+    @Inject
+    HandleJson handleJson;
+
     @When("Data of object is updated when invoke api update object")
     public void sendRequestUpdateObject() throws IOException {
-        JSONObject body = objectModel.getResponse();
+        Map<String, Object> mapBody= objectModel.getBody();
+        JSONObject bodyJson = new JSONObject(mapBody);
         String id = objectModel.getId();
 
-        response = RestAssured.given().spec(updateObjectAPI.initRequest(body, id)).when().put();
+        response = RestAssured.given().spec(updateObjectAPI.initRequest(bodyJson, id)).when().put();
         Assert.assertEquals(response.statusCode(), statusCodeSuccess);
+
+
+        JSONObject reponseJson = handleJson.convertResponseToJsonObject(response);
+        Map<String, Object> mapResponse = new HashMap<>();
+        handleJson.parseJsonToMap(reponseJson, mapResponse);
+        Assert.assertTrue(!mapBody.equals(mapResponse));
     }
 }

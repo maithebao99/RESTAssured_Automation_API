@@ -48,67 +48,28 @@ public class AddObjectAPISteps {
         response = request.when().post();
         System.out.printf(response.asPrettyString());
         Assert.assertEquals(response.statusCode(), statusCodeSuccess);
-    }
 
-//    @Then("Verify response data and body request Add Object API")
-//    public void verifyResponseData()
-//    {
-//        //Parse id from response and save id object to object model
-//        String idObject = response.jsonPath().getString("id");
-//        objectModel.setId(idObject);
-//
-//        //Handle Response type Json Object to String Response
-//        String responseString = response.asString();
-//
-//        //Chuyển response từ string sang jsonobject để handle parse json object từ response
-//        JSONObject jsonObjectResponse = new JSONObject(responseString);
-//
-//        //Save respone to object model
-//        objectModel.setResponse(jsonObjectResponse);
-//
-//        //Verify name of response
-//        if(objectModel.getName() != null)
-//        {
-//            Assert.assertTrue(jsonObjectResponse.has("name"));
-//            String nameFromResponse = response.jsonPath().getString("name");
-//            //Handle verify data between response and json body
-//            Assert.assertEquals(nameFromResponse, objectModel.getName());
-//        }
-//        else
-//        {
-//            Assert.assertTrue(jsonObjectResponse.isNull("name"));
-//        }
-//
-//        //Verify data object of response
-//        if(objectModel.getDataObject() != null)
-//        {
-//            Assert.assertTrue(jsonObjectResponse.has("data"));
-//            JSONObject dataObjectFromResponse = jsonObjectResponse.getJSONObject("data");
-//            JSONAssert.assertEquals(dataObjectFromResponse, objectModel.getDataObject(), false);
-//
-//        }
-//        else
-//        {
-//            Assert.assertTrue(jsonObjectResponse.isNull("data"));
-//        }
-//    }
+    }
 
     @Then("Verify response data and body request Add Object API")
     public void verifyResponseData()
     {
-
         //Convert response to json object
         String stringResponse = response.asString();
         JSONObject jsonResponse = new JSONObject(stringResponse);
 
         Assert.assertTrue(!handleJson.isJsonObjectEmpty(jsonResponse));
 
+        Map<String, Object> responseMap = new HashMap<>();
+        handleJson.parseJsonToMap(jsonResponse, responseMap);
         //Save respone to object model
-        objectModel.setResponse(jsonResponse);
+        objectModel.setResponse(responseMap);
+
+        Assert.assertEquals(responseMap, objectModel.getResponse());
 
         //Parse id from response and save id object to object model
-        String idObject = jsonResponse.getString("id");
-        objectModel.setId(idObject);
+        Object idObject = responseMap.get("id");
+        objectModel.setId(idObject.toString());
 
     }
 }

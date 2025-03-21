@@ -7,11 +7,15 @@ import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import model.ObjectModel;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
 import request.objectsAPI.GetObjectAPI;
 import utilities.HandleJson;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @ScenarioScoped
 public class GetObjectAPISteps {
@@ -40,36 +44,15 @@ public class GetObjectAPISteps {
     @And("Verify response data and body request Get Object API")
     public void verifyResponseGetObject()
     {
-        //Handle response to string and string to json object
-        String responseString = response.asString();
+        String stringResponse = response.asString();
+        JSONArray jsonArray= new JSONArray(stringResponse);
+        JSONObject jsonResponse = jsonArray.getJSONObject(0);
 
-        //Lấy phần tử đầu tiên trong danh sách khi get object by id
-        JSONObject responseObject = handleJson.getObjectInJsonArray(responseString, 0);
+        Assert.assertTrue(!handleJson.isJsonObjectEmpty(jsonResponse));
 
-        String idObject = responseObject.getString("id");
-        Assert.assertEquals(idObject, objectModel.getId());
+        Map<String, Object> responseMap = new HashMap<>();
+        handleJson.parseJsonToMap(jsonResponse, responseMap);
 
-        //Check key exits and parse
-        if (responseObject.has("name") && !responseObject.isNull("name"))
-        {
-            String nameObject = responseObject.getString("name");
-            Assert.assertEquals(nameObject, objectModel.getName());
-        }
-        else if(!responseObject.has("name") || responseObject.isNull("name"))
-        {
-            Assert.fail("Key 'name' not exits");
-        }
-
-        //Check key exits and parse
-        if (responseObject.has("data") && !responseObject.isNull("data"))
-        {
-            JSONObject dataObject = responseObject.getJSONObject("data");
-            JSONAssert.assertEquals(dataObject, objectModel.getDataObject(), false);
-        }
-        else if (!responseObject.has("data") || responseObject.isNull("data"))
-        {
-            Assert.fail("Key 'data' not exits");
-        }
-
+        Assert.assertEquals(objectModel.getBody(), responseMap);
     }
 }

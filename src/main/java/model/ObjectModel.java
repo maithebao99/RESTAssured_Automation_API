@@ -5,15 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 import org.json.JSONObject;
 
+import java.util.Map;
+import java.util.Objects;
+
 @ScenarioScoped
 @Getter
 @Setter
 public class ObjectModel {
 
 
-    private String name;
-    private JSONObject dataObject;
-    private JSONObject response;
+    private Map<String, Object> body;
+    private Map<String, Object> response;
 
     private String id;
 }
