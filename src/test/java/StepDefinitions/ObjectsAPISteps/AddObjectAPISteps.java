@@ -14,7 +14,6 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import Request.ObjectsAPI.AddObjectAPI;
 import Utilities.HandleJson.ConvertToJson;
-import Utilities.HandleJson.JsonChecker;
 import Utilities.HandleJson.JsonParser;
 
 import java.io.IOException;
@@ -32,9 +31,6 @@ public class AddObjectAPISteps {
 
     @Inject
     JsonParser jsonParser;
-
-    @Inject
-    JsonChecker jsonChecker;
 
     @Inject
     ConvertToJson convertToJson;
@@ -65,7 +61,7 @@ public class AddObjectAPISteps {
         //Convert response to json object
         JSONObject jsonResponse = convertToJson.convertResponseToJsonObject(response);
 
-        Assert.assertTrue(!jsonChecker.isJsonObjectEmpty(jsonResponse));
+        Assert.assertTrue(!jsonResponse.isEmpty());
 
         Map<String, Object> responseMap = new HashMap<>();
         jsonParser.parseJsonObjectToMap(jsonResponse, responseMap);

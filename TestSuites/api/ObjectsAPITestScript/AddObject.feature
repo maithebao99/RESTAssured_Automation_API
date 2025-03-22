@@ -1,5 +1,5 @@
 @RegressionTest
-Feature: Add a object
+Feature: Add a object successfully
 
   @PositiveTest @AddObject
   Scenario: Add a object successfully when invoke api add object with full field json body

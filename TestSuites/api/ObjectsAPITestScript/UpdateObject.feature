@@ -1,5 +1,7 @@
 @RegressionTest @UpdateObject
-Feature: Update object success
+Feature: Update object successfully
+
+  @UpdateObject
   Scenario: Update data object success after create a object
     Given Set body "HappyCase" to Add Object API
     When Create a new object when invoke api add object

@@ -16,4 +16,5 @@ public class ObjectModel {
     private Map<String, Object> response;
 
     private String id;
+    private String invalidId;
 }

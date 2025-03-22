@@ -13,7 +13,6 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import Request.ObjectsAPI.GetObjectAPI;
 import Utilities.HandleJson.ConvertToJson;
-import Utilities.HandleJson.JsonChecker;
 import Utilities.HandleJson.JsonParser;
 
 import java.util.HashMap;
@@ -35,14 +34,11 @@ public class GetObjectAPISteps {
     ConvertToJson convertToJson;
 
     @Inject
-    JsonChecker jsonChecker;
-
-    @Inject
     Constant constant;
 
     Response response;
 
-    @Then("Receive data object when invoke api get object with id valid")
+    @Then("Receive data object when invoke api get object with id does exist")
     public void sendRequestGetObjectWithIDValid()
     {
         response = RestAssured.given().spec(getObjectAPI.initRequest()).when().get();
@@ -54,28 +50,26 @@ public class GetObjectAPISteps {
     public void verifyResponseGetObject()
     {
         JSONArray jsonArrayResponse= convertToJson.convertResponseToJsonArray(response);
-        Assert.assertTrue(!jsonChecker.isJsonArrayEmpty(jsonArrayResponse));
+        if(!jsonArrayResponse.isEmpty())
+        {
+            JSONObject jsonResponse = jsonArrayResponse.getJSONObject(0);
 
-        JSONObject jsonResponse = jsonArrayResponse.getJSONObject(0);
+            Map<String, Object> responseMap = new HashMap<>();
+            jsonParser.parseJsonObjectToMap(jsonResponse, responseMap);
 
-        Map<String, Object> responseMap = new HashMap<>();
-        jsonParser.parseJsonObjectToMap(jsonResponse, responseMap);
-
-        Assert.assertEquals(objectModel.getBody(), responseMap);
+            Assert.assertEquals(objectModel.getBody(), responseMap);
+        }
+        else
+        {
+            Assert.assertTrue(jsonArrayResponse.isEmpty(), "ID object doesn't exist");
+        }
     }
 
-    @Then("Receive data object when invoke api get object with id invalid is {string}")
+    @Then("Receive data object when invoke api get object with id doesn't exist is {string}")
     public void sendRequestGetObjectWithIDInvalid(String idObject)
     {
         response = RestAssured.given().spec(getObjectAPI.initRequest(idObject)).when().get();
         System.out.println(response.asPrettyString());
         Assert.assertEquals(response.statusCode(), constant.getStatusCodeSuccess());
-    }
-
-    @And("Verify response data and body Get Object API when invoke get object with id invalid")
-    public void verifyResponseGetObjectWithIDInvalid()
-    {
-        JSONArray jsonArrayResponse= convertToJson.convertResponseToJsonArray(response);
-        Assert.assertTrue(jsonChecker.isJsonArrayEmpty(jsonArrayResponse));
     }
 }

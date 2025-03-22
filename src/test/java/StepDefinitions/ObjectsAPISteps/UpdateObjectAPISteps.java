@@ -1,7 +1,6 @@
 package StepDefinitions.ObjectsAPISteps;
 
 import Utilities.Constant;
-import Utilities.HandleJson.JsonChecker;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.cucumber.java.en.And;
@@ -39,9 +38,6 @@ public class UpdateObjectAPISteps {
     @Inject
     ConvertToJson convertToJson;
 
-    @Inject
-    JsonChecker jsonChecker;
-
     Map<String, Object> mapBody;
 
     @When("Data of object is updated when invoke api update object")
@@ -60,7 +56,7 @@ public class UpdateObjectAPISteps {
     {
         mapBody= objectModel.getBody();
         JSONObject responseJson = convertToJson.convertResponseToJsonObject(response);
-        Assert.assertTrue(!jsonChecker.isJsonObjectEmpty(responseJson));
+        Assert.assertTrue(!responseJson.isEmpty());
         Map<String, Object> mapResponse = new HashMap<>();
         jsonParser.parseJsonObjectToMap(responseJson, mapResponse);
 

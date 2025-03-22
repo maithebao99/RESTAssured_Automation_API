@@ -14,4 +14,6 @@ public class Path {
     private final String pathGetObject = "/objects";
 
     private final String pathUpdateObject = "/objects/";
+
+    private final String pathDeleteObject = "/objects/";
 }
