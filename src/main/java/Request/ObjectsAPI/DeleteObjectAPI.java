@@ -33,8 +33,8 @@ public class DeleteObjectAPI {
     {
         setHeader();
         request = new RequestSpecBuilder()
-                .setBaseUri(path.getBaseURL())
-                .setBasePath(path.getPathDeleteObject()+objectModel.getId())
+                .setBaseUri(path.getBaseObjectURL())
+                .setBasePath(path.getPathObject()+"/"+objectModel.getId())
                 .addHeaders(header)
                 .build();
 
@@ -46,8 +46,8 @@ public class DeleteObjectAPI {
     {
         setHeader();
         request = new RequestSpecBuilder()
-                .setBaseUri(path.getBaseURL())
-                .setBasePath(path.getPathDeleteObject()+id)
+                .setBaseUri(path.getBaseObjectURL())
+                .setBasePath(path.getPathObject()+"/"+id)
                 .addHeaders(header)
                 .build();
 

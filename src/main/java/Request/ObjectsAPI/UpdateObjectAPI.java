@@ -73,8 +73,8 @@ public class UpdateObjectAPI {
         setBody(bodyJsonObject);
         setHeader();
         request = new RequestSpecBuilder()
-                .setBaseUri(path.getBaseURL())
-                .setBasePath(path.getPathUpdateObject()+id)
+                .setBaseUri(path.getBaseObjectURL())
+                .setBasePath(path.getPathObject()+"/"+id)
                 .addHeaders(header)
                 .setBody(body)
                 .build();

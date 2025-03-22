@@ -1,0 +1,29 @@
+{
+  "HappyCase": {
+    "name": "Iphone 16 Pro Max",
+    "data": {
+      "year": 2021,
+      "price": 1849.99,
+      "CPU model": "Snap Dragon gen 2",
+      "Hard disk size": "1 TB"
+    }
+  },
+  "MissingName": {
+    "data": {
+      "Generation": "4th",
+      "Price": "519.99",
+      "Capacity": "256 GB"
+    }
+  },
+  "MissingData": {
+    "name": "Samsung S25"
+  },
+  "ValueDataRandomKey": {
+    "name": "Samsung S20 Ultra",
+    "data": {
+      "price": 1999,
+      "chip": "AMD",
+      "description": "ssd 512 GB"
+    }
+  }
+}

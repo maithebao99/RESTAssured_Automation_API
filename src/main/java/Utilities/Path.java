@@ -7,13 +7,11 @@ import lombok.Getter;
 @ScenarioScoped
 public class Path {
 
-    private final String baseURL = "https://api.restful-api.dev";
+    private final String baseObjectURL = "https://api.restful-api.dev";
 
-    private final String pathAddObject = "/objects";
+    private final String pathObject = "/objects";
 
-    private final String pathGetObject = "/objects";
+    private final String baseBookingURL = "https://restful-booker.herokuapp.com/";
 
-    private final String pathUpdateObject = "/objects/";
-
-    private final String pathDeleteObject = "/objects/";
+    private final String pathBooking = "booking/";
 }

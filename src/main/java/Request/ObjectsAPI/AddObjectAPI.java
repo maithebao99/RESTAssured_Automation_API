@@ -44,7 +44,7 @@ public class AddObjectAPI {
     private void setBody(String caseBody) throws IOException
     {
         //Get json file from path file
-        File file = new File("TestSuites/data/objectsAPI/AddObjectData/bodyAddObject.json");
+        File file = new File("TestSuites/data/ObjectsData/bodyAddObject.json");
         //Handle to Json String
         JSONObject jsonObject = readFile.readFileToJsonObject(file, Charset.defaultCharset());
 
@@ -70,8 +70,8 @@ public class AddObjectAPI {
         setBody(caseBody);
         setHeader();
         request = new RequestSpecBuilder()
-                .setBaseUri(path.getBaseURL())
-                .setBasePath(path.getPathAddObject())
+                .setBaseUri(path.getBaseObjectURL())
+                .setBasePath(path.getPathObject())
                 .setBody(body)
                 .addHeaders(header)
                 .build();
