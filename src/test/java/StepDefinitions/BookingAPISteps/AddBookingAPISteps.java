@@ -49,18 +49,27 @@ public class AddBookingAPISteps {
     public void sendRequestAddBooking() throws IOException {
         response = request.when().post();
         System.out.println(response.asPrettyString());
-        Assert.assertEquals(response.statusCode(), constant.getStatusCodeSuccess());
+
     }
 
-    @Then("Verify response data and body Add Booking API")
-    public void verifyResponseAddBooking()
+    @Then("Verify response data and {int} Add Booking API")
+    public void verifyResponseAddBooking(int statusCode)
     {
-        JSONObject responseObject = convertToJson.convertResponseToJsonObject(response);
-        JSONObject bookingValue = responseObject.getJSONObject("booking");
-        Map<String, Object> bookingValueMap = new HashMap<>();
-        jsonParser.parseJsonObjectToMap(bookingValue, bookingValueMap);
+        Assert.assertEquals(response.statusCode(), statusCode);
+        if(response.statusCode()==constant.getStatusCodeSuccess())
+        {
+            JSONObject responseObject = convertToJson.convertResponseToJsonObject(response);
+            int bookingID = responseObject.getInt("bookingid");
+            bookingModel.setBookingID(bookingID);
 
-        Map<String, Object> bodyMap = bookingModel.getBody();
-        Assert.assertEquals(bodyMap,bookingValueMap);
+            //Convert response to map
+            JSONObject bookingValue = responseObject.getJSONObject("booking");
+            Map<String, Object> bookingValueMap = new HashMap<>();
+            jsonParser.parseJsonObjectToMap(bookingValue, bookingValueMap);
+
+            Map<String, Object> bodyMap = bookingModel.getBody();
+            Assert.assertEquals(bodyMap,bookingValueMap);
+        }
+
     }
 }

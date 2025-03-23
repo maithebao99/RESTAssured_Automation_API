@@ -11,7 +11,7 @@ public class Path {
 
     private final String pathObject = "/objects";
 
-    private final String baseBookingURL = "https://restful-booker.herokuapp.com/";
+    private final String baseBookingURL = "https://restful-booker.herokuapp.com";
 
-    private final String pathBooking = "booking/";
+    private final String pathBooking = "/booking/";
 }

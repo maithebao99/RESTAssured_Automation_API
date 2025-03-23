@@ -12,4 +12,5 @@ import java.util.Map;
 public class BookingModel {
 
     private Map<String, Object> body;
+    private int bookingID;
 }

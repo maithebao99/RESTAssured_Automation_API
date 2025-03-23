@@ -18,6 +18,7 @@ import java.util.Map;
 
 @ScenarioScoped
 public class AddBookingAPI {
+
     private String body;
     private Map<String, String> header;
     private RequestSpecification request;
@@ -45,12 +46,18 @@ public class AddBookingAPI {
         File content = new File("TestSuites/data/BookingData/bodyAddBooking.json");
         JSONObject bodyContent = readFile.readFileToJsonObject(content, Charset.defaultCharset());
         JSONObject bodyObject = bodyContent.getJSONObject(bodycase);
+        if (!bodyObject.isEmpty())
+        {
+            Map<String, Object> bodyMap = new HashMap<>();
+            jsonParser.parseJsonObjectToMap(bodyObject, bodyMap);
+            bookingModel.setBody(bodyMap);
+            body = bodyObject.toString();
+        }
+        else
+        {
+            body = bodyContent.toString();
+        }
 
-        Map<String, Object> bodyMap = new HashMap<>();
-        jsonParser.parseJsonObjectToMap(bodyObject, bodyMap);
-        bookingModel.setBody(bodyMap);
-
-        body = bodyObject.toString();
     }
 
     public RequestSpecification initRequestAddBooking(String bodycase) throws IOException {
