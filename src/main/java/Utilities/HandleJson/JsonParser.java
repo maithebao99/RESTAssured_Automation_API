@@ -44,7 +44,7 @@ public class JsonParser {
     }
 
     // Hàm để parse JSON arrays và lưu vào List
-    public Object parseValueIsJsonArray(JSONArray jsonArray) {
+    private Object parseValueIsJsonArray(JSONArray jsonArray) {
         // Duyệt qua tất cả các phần tử trong JSONArray và lưu vào List
         JSONArray resultArray = new JSONArray();
         for (int i = 0; i < jsonArray.length(); i++) {
@@ -89,7 +89,7 @@ public class JsonParser {
     }
 
     // Hàm để parse một JSONObject và lưu vào Map
-    public void parseValueIsJsonObject(JSONObject jsonObject, Map<String, Object> resultMap, String parentKey) {
+    private void parseValueIsJsonObject(JSONObject jsonObject, Map<String, Object> resultMap, String parentKey) {
         JSONArray keys = jsonObject.names();
 
         // Duyệt qua tất cả các key trong JSONObject

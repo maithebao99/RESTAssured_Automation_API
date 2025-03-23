@@ -2,7 +2,7 @@ package StepDefinitions.ObjectsAPISteps;
 
 import Model.ObjectModel;
 import Request.ObjectsAPI.DeleteObjectAPI;
-import Utilities.Constant;
+import Utilities.StatusCodeRequest;
 import Utilities.HandleJson.ConvertToJson;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
@@ -23,7 +23,7 @@ public class DeleteObjectAPISteps {
     DeleteObjectAPI deleteObjectAPI;
 
     @Inject
-    Constant constant;
+    StatusCodeRequest statusCodeRequest;
 
     @Inject
     ConvertToJson convertToJson;
@@ -52,12 +52,12 @@ public class DeleteObjectAPISteps {
         JSONObject jsonResponse = convertToJson.convertResponseToJsonObject(response);
         Assert.assertTrue(!jsonResponse.isEmpty());
 
-        if(response.statusCode() == constant.getStatusCodeSuccess())
+        if(response.statusCode() == statusCodeRequest.getStatusCodeSuccess())
         {
             String messageSuccess = jsonResponse.getString("message");
             Assert.assertEquals(messageSuccess, "Object with id = " + objectModel.getId() +" has been deleted.");
         }
-        else if(response.statusCode() == constant.getStatusCodeNotFound())
+        else if(response.statusCode() == statusCodeRequest.getStatusCodeNotFound())
         {
             String error = jsonResponse.getString("error");
             Assert.assertEquals(error, "Object with id = " + objectModel.getInvalidId() +" doesn't exist.");

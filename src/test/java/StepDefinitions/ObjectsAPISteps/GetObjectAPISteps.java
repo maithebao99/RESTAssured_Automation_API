@@ -1,6 +1,6 @@
 package StepDefinitions.ObjectsAPISteps;
 
-import Utilities.Constant;
+import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.cucumber.java.en.And;
@@ -34,7 +34,7 @@ public class GetObjectAPISteps {
     ConvertToJson convertToJson;
 
     @Inject
-    Constant constant;
+    StatusCodeRequest statusCodeRequest;
 
     Response response;
 
@@ -43,7 +43,7 @@ public class GetObjectAPISteps {
     {
         response = RestAssured.given().spec(getObjectAPI.initRequest()).when().get();
         System.out.println(response.asPrettyString());
-        Assert.assertEquals(response.statusCode(), constant.getStatusCodeSuccess());
+        Assert.assertEquals(response.statusCode(), statusCodeRequest.getStatusCodeSuccess());
     }
 
     @And("Verify response data and body Get Object API")
@@ -70,6 +70,6 @@ public class GetObjectAPISteps {
     {
         response = RestAssured.given().spec(getObjectAPI.initRequest(idObject)).when().get();
         System.out.println(response.asPrettyString());
-        Assert.assertEquals(response.statusCode(), constant.getStatusCodeSuccess());
+        Assert.assertEquals(response.statusCode(), statusCodeRequest.getStatusCodeSuccess());
     }
 }

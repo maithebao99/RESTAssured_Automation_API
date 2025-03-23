@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @ScenarioScoped
 @Getter
-public class Constant {
+public class StatusCodeRequest {
 
     private final int statusCodeSuccess = 200;
 

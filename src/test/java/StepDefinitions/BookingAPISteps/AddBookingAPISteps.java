@@ -2,7 +2,7 @@ package StepDefinitions.BookingAPISteps;
 
 import Model.BookingModel;
 import Request.BookingAPI.AddBookingAPI;
-import Utilities.Constant;
+import Utilities.StatusCodeRequest;
 import Utilities.HandleJson.ConvertToJson;
 import Utilities.HandleJson.JsonParser;
 import com.google.inject.Inject;
@@ -27,7 +27,7 @@ public class AddBookingAPISteps {
     AddBookingAPI addBookingAPI;
 
     @Inject
-    Constant constant;
+    StatusCodeRequest statusCodeRequest;
 
     @Inject
     JsonParser jsonParser;
@@ -56,7 +56,7 @@ public class AddBookingAPISteps {
     public void verifyResponseAddBooking(int statusCode)
     {
         Assert.assertEquals(response.statusCode(), statusCode);
-        if(response.statusCode()==constant.getStatusCodeSuccess())
+        if(response.statusCode()== this.statusCodeRequest.getStatusCodeSuccess())
         {
             JSONObject responseObject = convertToJson.convertResponseToJsonObject(response);
             int bookingID = responseObject.getInt("bookingid");

@@ -1,6 +1,6 @@
 package StepDefinitions.ObjectsAPISteps;
 
-import Utilities.Constant;
+import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.cucumber.java.en.And;
@@ -33,7 +33,7 @@ public class UpdateObjectAPISteps {
     JsonParser jsonParser;
 
     @Inject
-    Constant constant;
+    StatusCodeRequest statusCodeRequest;
 
     @Inject
     ConvertToJson convertToJson;
@@ -48,7 +48,7 @@ public class UpdateObjectAPISteps {
 
         response = RestAssured.given().spec(updateObjectAPI.initRequest(bodyJson, id)).when().put();
         System.out.println(response.asPrettyString());
-        Assert.assertEquals(response.statusCode(), constant.getStatusCodeSuccess());
+        Assert.assertEquals(response.statusCode(), statusCodeRequest.getStatusCodeSuccess());
     }
 
     @And("Verify response data is updated when invoke api update object")
