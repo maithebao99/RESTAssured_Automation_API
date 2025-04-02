@@ -1,4 +1,4 @@
-@RegressionTest @UpdateObject
+@RegressionTest @UpdateObject @Object
 Feature: Update object successfully
 
   @UpdateObject

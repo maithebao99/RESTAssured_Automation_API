@@ -44,9 +44,8 @@ public class UpdateObjectAPI {
         changeValues(bodyJsonObject);
         body = bodyJsonObject.toString();
 
-        Map<String, Object> mapBody = new HashMap<>();
-        jsonParser.parseJsonObjectToMap(bodyJsonObject, mapBody);
-        objectModel.setBody(mapBody);
+        //save jsonBody to variable body after change value
+        objectModel.setBody(bodyJsonObject);
     }
 
     public void changeValues(JSONObject jsonObject) {
@@ -73,8 +72,8 @@ public class UpdateObjectAPI {
         setBody(bodyJsonObject);
         setHeader();
         request = new RequestSpecBuilder()
-                .setBaseUri(path.getBaseObjectURL())
-                .setBasePath(path.getPathObject()+"/"+id)
+                .setBaseUri(Path.baseObjectURL)
+                .setBasePath(Path.pathObject+"/"+id)
                 .addHeaders(header)
                 .setBody(body)
                 .build();

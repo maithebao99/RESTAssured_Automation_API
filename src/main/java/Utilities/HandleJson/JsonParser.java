@@ -11,7 +11,7 @@ import java.util.Map;
 public class JsonParser {
 
     //Parse key - value trong json and save to map
-    public void parseJsonObjectToMap(JSONObject jsonObject, Map<String, Object> resultMap) {
+    public static void parseJsonObjectToMap(JSONObject jsonObject, Map<String, Object> resultMap) {
         // Lấy tất cả các key từ JSONObject
         JSONArray keys = jsonObject.names();
 
@@ -44,7 +44,7 @@ public class JsonParser {
     }
 
     // Hàm để parse JSON arrays và lưu vào List
-    private Object parseValueIsJsonArray(JSONArray jsonArray) {
+    private static Object parseValueIsJsonArray(JSONArray jsonArray) {
         // Duyệt qua tất cả các phần tử trong JSONArray và lưu vào List
         JSONArray resultArray = new JSONArray();
         for (int i = 0; i < jsonArray.length(); i++) {

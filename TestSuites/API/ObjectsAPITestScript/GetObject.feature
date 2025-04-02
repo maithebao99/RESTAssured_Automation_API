@@ -1,4 +1,4 @@
-@RegressionTest
+@RegressionTest @Object
 Feature: Get info object successfully
 
   @GetObject

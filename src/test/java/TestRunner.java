@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "TestSuites/API",  // Vị trí các tệp .feature
         glue = "StepDefinitions",                  // Vị trí các bước kiểm thử (step definitions)
-        tags = "@GetDetailBooking",
+        tags = "@RegressionTest",
         plugin = {"pretty", "html:target/cucumber-report.html"} // Các plugin để tạo báo cáo
 
 )

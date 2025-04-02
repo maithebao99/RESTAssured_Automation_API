@@ -47,8 +47,8 @@ public class GetObjectAPI {
         setParam();
         setHeader();
         request = new RequestSpecBuilder()
-                .setBaseUri(path.getBaseObjectURL())
-                .setBasePath(path.getPathObject())
+                .setBaseUri(Path.baseObjectURL)
+                .setBasePath(Path.pathObject)
                 .addQueryParams(param)
                 .addHeaders(header)
                 .build();
@@ -60,8 +60,8 @@ public class GetObjectAPI {
         setParam(id);
         setHeader();
         request = new RequestSpecBuilder()
-                .setBaseUri(path.getBaseObjectURL())
-                .setBasePath(path.getPathObject())
+                .setBaseUri(Path.baseObjectURL)
+                .setBasePath(Path.pathObject)
                 .addQueryParams(param)
                 .addHeaders(header)
                 .build();

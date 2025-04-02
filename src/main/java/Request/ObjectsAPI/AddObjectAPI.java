@@ -27,9 +27,6 @@ public class AddObjectAPI {
     JsonParser jsonParser;
 
     @Inject
-    ReadFile readFile;
-
-    @Inject
     Path path;
 
     @Inject
@@ -46,14 +43,12 @@ public class AddObjectAPI {
         //Get json file from path file
         File file = new File("TestSuites/data/ObjectsData/bodyAddObject.json");
         //Handle to Json String
-        JSONObject jsonObject = readFile.readFileToJsonObject(file, Charset.defaultCharset());
+        JSONObject jsonObject = ReadFile.readFileToJsonObject(file, Charset.defaultCharset());
 
         //Handle Json String to Json Object
         JSONObject bodyJsonObject = jsonObject.getJSONObject(caseBody);
 
-        Map<String, Object> bodyMap = new HashMap<>();
-        jsonParser.parseJsonObjectToMap(bodyJsonObject, bodyMap);
-        objectModel.setBody(bodyMap);
+        objectModel.setBody(bodyJsonObject);
 
         //Handle Json Object to Json String and save to body
         body = bodyJsonObject.toString();
@@ -70,8 +65,8 @@ public class AddObjectAPI {
         setBody(caseBody);
         setHeader();
         request = new RequestSpecBuilder()
-                .setBaseUri(path.getBaseObjectURL())
-                .setBasePath(path.getPathObject())
+                .setBaseUri(Path.baseObjectURL)
+                .setBasePath(Path.pathObject)
                 .setBody(body)
                 .addHeaders(header)
                 .build();

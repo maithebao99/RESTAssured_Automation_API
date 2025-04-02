@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class ConvertToJson {
 
     //Convert response to json object
-    public JSONObject convertResponseToJsonObject(Response response)
+    public static JSONObject convertResponseToJsonObject(Response response)
     {
         String stringResponse = response.asString();
         JSONObject jsonReponse = new JSONObject(stringResponse);
@@ -18,7 +18,7 @@ public class ConvertToJson {
     }
 
     //Convert reponse to json array
-    public JSONArray convertResponseToJsonArray(Response response)
+    public static JSONArray convertResponseToJsonArray(Response response)
     {
         String stringResponse = response.asString();
         JSONArray jsonArrayReponse = new JSONArray(stringResponse);

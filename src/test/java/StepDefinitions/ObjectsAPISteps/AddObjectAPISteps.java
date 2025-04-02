@@ -1,5 +1,6 @@
 package StepDefinitions.ObjectsAPISteps;
 
+import Utilities.HandleJson.JsonCompare;
 import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
@@ -30,12 +31,6 @@ public class AddObjectAPISteps {
     ObjectModel objectModel;
 
     @Inject
-    JsonParser jsonParser;
-
-    @Inject
-    ConvertToJson convertToJson;
-
-    @Inject
     StatusCodeRequest statusCodeRequest;
 
     Response response;
@@ -51,28 +46,23 @@ public class AddObjectAPISteps {
     public void sendRequestAddObject() throws IOException {
         response = request.when().post();
         System.out.println(response.asPrettyString());
-        Assert.assertEquals(response.statusCode(), statusCodeRequest.getStatusCodeSuccess());
-
+        Assert.assertEquals(response.statusCode(), StatusCodeRequest.statusCodeSuccess);
     }
 
     @Then("Verify response data and body Add Object API")
     public void verifyResponseData()
     {
         //Convert response to json object
-        JSONObject jsonResponse = convertToJson.convertResponseToJsonObject(response);
+        JSONObject jsonResponse = ConvertToJson.convertResponseToJsonObject(response);
 
         Assert.assertTrue(!jsonResponse.isEmpty());
 
-        Map<String, Object> responseMap = new HashMap<>();
-        jsonParser.parseJsonObjectToMap(jsonResponse, responseMap);
-        //Save respone to object model
-        objectModel.setResponse(responseMap);
-
-        Assert.assertEquals(responseMap, objectModel.getResponse());
+        JSONObject jsonBody = objectModel.getBody();
+        Assert.assertTrue(JsonCompare.compareJsonObjects(jsonBody, jsonResponse));
 
         //Parse id from response and save id object to object model
-        Object idObject = responseMap.get("id");
-        objectModel.setId(idObject.toString());
+        String idObject = jsonResponse.getString("id");
+        objectModel.setId(idObject);
 
     }
 }

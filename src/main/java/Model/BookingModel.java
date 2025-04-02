@@ -3,14 +3,14 @@ package Model;
 import io.cucumber.guice.ScenarioScoped;
 import lombok.Getter;
 import lombok.Setter;
+import org.json.JSONObject;
 
-import java.util.Map;
 
 @ScenarioScoped
 @Getter
 @Setter
 public class BookingModel {
 
-    private Map<String, Object> body;
+    private JSONObject body;
     private int bookingID;
 }

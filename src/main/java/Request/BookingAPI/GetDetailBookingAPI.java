@@ -38,8 +38,8 @@ public class GetDetailBookingAPI {
     {
         setHeader();
         request = new RequestSpecBuilder()
-                .setBaseUri(path.getBaseBookingURL())
-                .setBasePath(path.getPathBooking()+bookingModel.getBookingID())
+                .setBaseUri(Path.baseBookingURL)
+                .setBasePath(Path.pathBooking+bookingModel.getBookingID())
                 .addHeaders(header)
                 .build();
         return request;

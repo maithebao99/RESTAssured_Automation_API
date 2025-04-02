@@ -2,6 +2,7 @@ package StepDefinitions.BookingAPISteps;
 
 import Model.BookingModel;
 import Request.BookingAPI.AddBookingAPI;
+import Utilities.HandleJson.JsonCompare;
 import Utilities.StatusCodeRequest;
 import Utilities.HandleJson.ConvertToJson;
 import Utilities.HandleJson.JsonParser;
@@ -30,12 +31,6 @@ public class AddBookingAPISteps {
     StatusCodeRequest statusCodeRequest;
 
     @Inject
-    JsonParser jsonParser;
-
-    @Inject
-    ConvertToJson convertToJson;
-
-    @Inject
     BookingModel bookingModel;
 
     RequestSpecification request;
@@ -56,19 +51,17 @@ public class AddBookingAPISteps {
     public void verifyResponseAddBooking(int statusCode)
     {
         Assert.assertEquals(response.statusCode(), statusCode);
-        if(response.statusCode()== this.statusCodeRequest.getStatusCodeSuccess())
+        if(response.statusCode()== StatusCodeRequest.statusCodeSuccess)
         {
-            JSONObject responseObject = convertToJson.convertResponseToJsonObject(response);
+            JSONObject responseObject = ConvertToJson.convertResponseToJsonObject(response);
             int bookingID = responseObject.getInt("bookingid");
             bookingModel.setBookingID(bookingID);
 
             //Convert response to map
             JSONObject bookingValue = responseObject.getJSONObject("booking");
-            Map<String, Object> bookingValueMap = new HashMap<>();
-            jsonParser.parseJsonObjectToMap(bookingValue, bookingValueMap);
+            JSONObject jsonBody = bookingModel.getBody();
 
-            Map<String, Object> bodyMap = bookingModel.getBody();
-            Assert.assertEquals(bodyMap,bookingValueMap);
+            Assert.assertTrue(JsonCompare.compareJsonObjects(jsonBody, bookingValue));
         }
 
     }

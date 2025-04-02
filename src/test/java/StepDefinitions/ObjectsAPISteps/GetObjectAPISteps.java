@@ -1,5 +1,6 @@
 package StepDefinitions.ObjectsAPISteps;
 
+import Utilities.HandleJson.JsonCompare;
 import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
@@ -28,12 +29,6 @@ public class GetObjectAPISteps {
     ObjectModel objectModel;
 
     @Inject
-    JsonParser jsonParser;
-
-    @Inject
-    ConvertToJson convertToJson;
-
-    @Inject
     StatusCodeRequest statusCodeRequest;
 
     Response response;
@@ -43,21 +38,19 @@ public class GetObjectAPISteps {
     {
         response = RestAssured.given().spec(getObjectAPI.initRequest()).when().get();
         System.out.println(response.asPrettyString());
-        Assert.assertEquals(response.statusCode(), statusCodeRequest.getStatusCodeSuccess());
+        Assert.assertEquals(response.statusCode(), StatusCodeRequest.statusCodeSuccess);
     }
 
     @And("Verify response data and body Get Object API")
     public void verifyResponseGetObject()
     {
-        JSONArray jsonArrayResponse= convertToJson.convertResponseToJsonArray(response);
+        JSONArray jsonArrayResponse= ConvertToJson.convertResponseToJsonArray(response);
         if(!jsonArrayResponse.isEmpty())
         {
             JSONObject jsonResponse = jsonArrayResponse.getJSONObject(0);
 
-            Map<String, Object> responseMap = new HashMap<>();
-            jsonParser.parseJsonObjectToMap(jsonResponse, responseMap);
-
-            Assert.assertEquals(objectModel.getBody(), responseMap);
+            JSONObject jsonBody = objectModel.getBody();
+            Assert.assertTrue(JsonCompare.compareJsonObjects(jsonBody, jsonResponse));
         }
         else
         {
@@ -70,6 +63,6 @@ public class GetObjectAPISteps {
     {
         response = RestAssured.given().spec(getObjectAPI.initRequest(idObject)).when().get();
         System.out.println(response.asPrettyString());
-        Assert.assertEquals(response.statusCode(), statusCodeRequest.getStatusCodeSuccess());
+        Assert.assertEquals(response.statusCode(), StatusCodeRequest.statusCodeSuccess);
     }
 }

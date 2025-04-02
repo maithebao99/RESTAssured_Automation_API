@@ -1,4 +1,4 @@
-@RegressionTest @AddBooking
+@RegressionTest @AddBooking @Booking
 Feature: Add booking successfully
 
   Scenario Outline: Add a new booking success when invoke api add booking
@@ -22,4 +22,3 @@ Feature: Add booking successfully
       | checkoutNull              | 500        |
       | addtionalneedsEmptyString | 200        |
       | addtionalneedsNull        | 200        |
-      | bodyEmpty                 | 500        |

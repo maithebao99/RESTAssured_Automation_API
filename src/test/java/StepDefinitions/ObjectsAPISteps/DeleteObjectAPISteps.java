@@ -25,8 +25,6 @@ public class DeleteObjectAPISteps {
     @Inject
     StatusCodeRequest statusCodeRequest;
 
-    @Inject
-    ConvertToJson convertToJson;
 
     @Inject
     ObjectModel objectModel;
@@ -49,15 +47,15 @@ public class DeleteObjectAPISteps {
     @And("Verify response data after invoke delete object api")
     public void verifyResponseData()
     {
-        JSONObject jsonResponse = convertToJson.convertResponseToJsonObject(response);
+        JSONObject jsonResponse = ConvertToJson.convertResponseToJsonObject(response);
         Assert.assertTrue(!jsonResponse.isEmpty());
 
-        if(response.statusCode() == statusCodeRequest.getStatusCodeSuccess())
+        if(response.statusCode() == StatusCodeRequest.statusCodeSuccess)
         {
             String messageSuccess = jsonResponse.getString("message");
             Assert.assertEquals(messageSuccess, "Object with id = " + objectModel.getId() +" has been deleted.");
         }
-        else if(response.statusCode() == statusCodeRequest.getStatusCodeNotFound())
+        else if(response.statusCode() == StatusCodeRequest.statusCodeNotFound)
         {
             String error = jsonResponse.getString("error");
             Assert.assertEquals(error, "Object with id = " + objectModel.getInvalidId() +" doesn't exist.");

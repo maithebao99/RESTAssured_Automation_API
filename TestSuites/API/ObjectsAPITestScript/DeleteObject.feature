@@ -1,4 +1,4 @@
-@RegressionTest
+@RegressionTest @Object
 Feature: Delete object successfully
 
   @DeleteObject

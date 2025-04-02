@@ -1,4 +1,4 @@
-@GetDetailBooking
+@GetDetailBooking @Booking
 Feature: Get data detail booking
 
   Scenario Outline: Receive data detail booking success when invoke get detail booking api

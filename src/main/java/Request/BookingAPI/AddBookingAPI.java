@@ -24,9 +24,6 @@ public class AddBookingAPI {
     private RequestSpecification request;
 
     @Inject
-    ReadFile readFile;
-
-    @Inject
     BookingModel bookingModel;
 
     @Inject
@@ -44,28 +41,21 @@ public class AddBookingAPI {
 
     private void setBody(String bodycase) throws IOException {
         File content = new File("TestSuites/data/BookingData/bodyAddBooking.json");
-        JSONObject bodyContent = readFile.readFileToJsonObject(content, Charset.defaultCharset());
+        JSONObject bodyContent = ReadFile.readFileToJsonObject(content, Charset.defaultCharset());
         JSONObject bodyObject = bodyContent.getJSONObject(bodycase);
         if (!bodyObject.isEmpty())
         {
-            Map<String, Object> bodyMap = new HashMap<>();
-            jsonParser.parseJsonObjectToMap(bodyObject, bodyMap);
-            bookingModel.setBody(bodyMap);
+            bookingModel.setBody(bodyObject);
             body = bodyObject.toString();
         }
-        else
-        {
-            body = bodyContent.toString();
-        }
-
     }
 
     public RequestSpecification initRequestAddBooking(String bodycase) throws IOException {
         setHeader();
         setBody(bodycase);
         request = new RequestSpecBuilder()
-                .setBaseUri(path.getBaseBookingURL())
-                .setBasePath(path.getPathBooking())
+                .setBaseUri(Path.baseBookingURL)
+                .setBasePath(Path.pathBooking)
                 .addHeaders(header)
                 .setBody(body)
                 .build();

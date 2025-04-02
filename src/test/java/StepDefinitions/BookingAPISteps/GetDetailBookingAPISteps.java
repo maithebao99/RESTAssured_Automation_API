@@ -2,6 +2,7 @@ package StepDefinitions.BookingAPISteps;
 
 import Model.BookingModel;
 import Request.BookingAPI.GetDetailBookingAPI;
+import Utilities.HandleJson.JsonCompare;
 import Utilities.StatusCodeRequest;
 import Utilities.HandleJson.ConvertToJson;
 import Utilities.HandleJson.JsonParser;
@@ -25,12 +26,6 @@ public class GetDetailBookingAPISteps {
     GetDetailBookingAPI getDetailBookingAPI;
 
     @Inject
-    ConvertToJson convertToJson;
-
-    @Inject
-    JsonParser jsonParser;
-
-    @Inject
     BookingModel bookingModel;
 
     @Inject
@@ -47,14 +42,11 @@ public class GetDetailBookingAPISteps {
     public void verifyResponseDataDetailBooking(int code)
     {
         Assert.assertEquals(response.statusCode(), code);
-        if(response.statusCode() == statusCodeRequest.getStatusCodeSuccess())
+        if(response.statusCode() == StatusCodeRequest.statusCodeSuccess)
         {
-            JSONObject responseObject = convertToJson.convertResponseToJsonObject(response);
-            Map<String, Object> responseBooking = new HashMap<>();
-            jsonParser.parseJsonObjectToMap(responseObject, responseBooking);
-
-            Map<String, Object> bodyBooking = bookingModel.getBody();
-            Assert.assertEquals(bodyBooking,  responseBooking);
+            JSONObject responseObject = ConvertToJson.convertResponseToJsonObject(response);
+            JSONObject jsonBody = bookingModel.getBody();
+            Assert.assertTrue(JsonCompare.compareJsonObjects(jsonBody, responseObject));
         }
     }
 }

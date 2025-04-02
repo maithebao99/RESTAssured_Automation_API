@@ -1,5 +1,6 @@
 package StepDefinitions.ObjectsAPISteps;
 
+import Utilities.HandleJson.JsonCompare;
 import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
@@ -29,37 +30,23 @@ public class UpdateObjectAPISteps {
     @Inject
     ObjectModel objectModel;
 
-    @Inject
-    JsonParser jsonParser;
-
-    @Inject
-    StatusCodeRequest statusCodeRequest;
-
-    @Inject
-    ConvertToJson convertToJson;
-
-    Map<String, Object> mapBody;
-
     @When("Data of object is updated when invoke api update object")
     public void sendRequestUpdateObject() throws IOException {
-        mapBody= objectModel.getBody();
-        JSONObject bodyJson = new JSONObject(mapBody);
+        JSONObject jsonBody= objectModel.getBody();
         String id = objectModel.getId();
 
-        response = RestAssured.given().spec(updateObjectAPI.initRequest(bodyJson, id)).when().put();
+        response = RestAssured.given().spec(updateObjectAPI.initRequest(jsonBody, id)).when().put();
         System.out.println(response.asPrettyString());
-        Assert.assertEquals(response.statusCode(), statusCodeRequest.getStatusCodeSuccess());
+        Assert.assertEquals(response.statusCode(), StatusCodeRequest.statusCodeSuccess);
     }
 
     @And("Verify response data is updated when invoke api update object")
     public void VerifyResponseUpdateObject()
     {
-        mapBody= objectModel.getBody();
-        JSONObject responseJson = convertToJson.convertResponseToJsonObject(response);
+        JSONObject responseJson = ConvertToJson.convertResponseToJsonObject(response);
         Assert.assertTrue(!responseJson.isEmpty());
-        Map<String, Object> mapResponse = new HashMap<>();
-        jsonParser.parseJsonObjectToMap(responseJson, mapResponse);
 
-        Assert.assertEquals(mapBody,mapResponse);
+        JSONObject jsonBody = objectModel.getBody();
+        Assert.assertTrue(JsonCompare.compareJsonObjects(jsonBody, responseJson));
     }
 }

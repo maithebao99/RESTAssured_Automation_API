@@ -1,4 +1,4 @@
-@RegressionTest @AddObject
+@RegressionTest @AddObject @Object
 Feature: Add a object successfully
 
   @PositiveTest
