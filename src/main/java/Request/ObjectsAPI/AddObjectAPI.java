@@ -1,10 +1,15 @@
 package Request.ObjectsAPI;
+
+import Model.ObjectModel;
+import Utilities.HandleFile.ReadFile;
+import Utilities.Path;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import lombok.Getter;
 import lombok.Setter;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,22 +17,10 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
-import Model.ObjectModel;
-import org.json.JSONObject;
-import Utilities.*;
-import Utilities.HandleFile.ReadFile;
-import Utilities.HandleJson.JsonParser;
-
 @Getter
 @Setter
 @ScenarioScoped
 public class AddObjectAPI {
-
-    @Inject
-    JsonParser jsonParser;
-
-    @Inject
-    Path path;
 
     @Inject
     ObjectModel objectModel;

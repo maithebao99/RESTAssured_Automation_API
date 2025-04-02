@@ -2,10 +2,8 @@ package StepDefinitions.BookingAPISteps;
 
 import Model.BookingModel;
 import Request.BookingAPI.AddBookingAPI;
-import Utilities.HandleJson.JsonCompare;
-import Utilities.StatusCodeRequest;
 import Utilities.HandleJson.ConvertToJson;
-import Utilities.HandleJson.JsonParser;
+import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.cucumber.java.en.Given;
@@ -19,17 +17,12 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 @ScenarioScoped
 public class AddBookingAPISteps {
     Response response;
     @Inject
     AddBookingAPI addBookingAPI;
-
-    @Inject
-    StatusCodeRequest statusCodeRequest;
 
     @Inject
     BookingModel bookingModel;

@@ -1,6 +1,8 @@
 package StepDefinitions.ObjectsAPISteps;
 
-import Utilities.HandleJson.JsonCompare;
+import Model.ObjectModel;
+import Request.ObjectsAPI.GetObjectAPI;
+import Utilities.HandleJson.ConvertToJson;
 import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
@@ -8,17 +10,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import Model.ObjectModel;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
-import Request.ObjectsAPI.GetObjectAPI;
-import Utilities.HandleJson.ConvertToJson;
-import Utilities.HandleJson.JsonParser;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @ScenarioScoped
 public class GetObjectAPISteps {
@@ -28,9 +23,6 @@ public class GetObjectAPISteps {
 
     @Inject
     ObjectModel objectModel;
-
-    @Inject
-    StatusCodeRequest statusCodeRequest;
 
     Response response;
 

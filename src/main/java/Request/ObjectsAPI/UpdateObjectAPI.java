@@ -1,14 +1,12 @@
 package Request.ObjectsAPI;
 
-import Utilities.HandleJson.ConvertToJson;
-import Utilities.HandleJson.JsonParser;
+import Model.ObjectModel;
+import Utilities.Path;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
-import Model.ObjectModel;
 import org.json.JSONObject;
-import Utilities.Path;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,21 +14,13 @@ import java.util.Map;
 
 @ScenarioScoped
 public class UpdateObjectAPI {
+
     private Map<String, String> header;
     private String body;
     private RequestSpecification request;
 
     @Inject
-    Path path;
-
-    @Inject
     ObjectModel objectModel;
-
-    @Inject
-    AddObjectAPI addObjectAPI;
-
-    @Inject
-    JsonParser jsonParser;
 
 
     private void setHeader()

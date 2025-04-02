@@ -17,9 +17,6 @@ public class DeleteObjectAPI {
     private RequestSpecification request;
 
     @Inject
-    Path path;
-
-    @Inject
     ObjectModel objectModel;
 
     private void setHeader()

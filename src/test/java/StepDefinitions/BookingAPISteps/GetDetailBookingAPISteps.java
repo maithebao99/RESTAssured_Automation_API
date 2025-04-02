@@ -2,10 +2,8 @@ package StepDefinitions.BookingAPISteps;
 
 import Model.BookingModel;
 import Request.BookingAPI.GetDetailBookingAPI;
-import Utilities.HandleJson.JsonCompare;
-import Utilities.StatusCodeRequest;
 import Utilities.HandleJson.ConvertToJson;
-import Utilities.HandleJson.JsonParser;
+import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.cucumber.java.en.And;
@@ -16,9 +14,6 @@ import org.json.JSONObject;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @ScenarioScoped
 public class GetDetailBookingAPISteps {
     Response response;
@@ -28,9 +23,6 @@ public class GetDetailBookingAPISteps {
 
     @Inject
     BookingModel bookingModel;
-
-    @Inject
-    StatusCodeRequest statusCodeRequest;
 
     @Then("Receive data detail booking when invoke api get detail booking")
     public void sendRequestGetDetailBooking()

@@ -16,8 +16,6 @@ public class GetObjectAPI {
     @Inject
     ObjectModel objectModel;
 
-    @Inject
-    Path path;
 
     private Map<String, String> param;
     private Map<String, String> header;
