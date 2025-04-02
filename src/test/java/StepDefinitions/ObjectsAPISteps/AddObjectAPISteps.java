@@ -12,6 +12,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import Model.ObjectModel;
 import org.json.JSONObject;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
 import Request.ObjectsAPI.AddObjectAPI;
 import Utilities.HandleJson.ConvertToJson;
@@ -58,7 +59,8 @@ public class AddObjectAPISteps {
         Assert.assertTrue(!jsonResponse.isEmpty());
 
         JSONObject jsonBody = objectModel.getBody();
-        Assert.assertTrue(JsonCompare.compareJsonObjects(jsonBody, jsonResponse));
+
+        JSONAssert.assertEquals(jsonBody, jsonResponse, false);
 
         //Parse id from response and save id object to object model
         String idObject = jsonResponse.getString("id");

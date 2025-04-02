@@ -11,6 +11,7 @@ import io.restassured.response.Response;
 import Model.ObjectModel;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
 import Request.ObjectsAPI.GetObjectAPI;
 import Utilities.HandleJson.ConvertToJson;
@@ -50,7 +51,7 @@ public class GetObjectAPISteps {
             JSONObject jsonResponse = jsonArrayResponse.getJSONObject(0);
 
             JSONObject jsonBody = objectModel.getBody();
-            Assert.assertTrue(JsonCompare.compareJsonObjects(jsonBody, jsonResponse));
+            JSONAssert.assertEquals(jsonBody, jsonResponse, false);
         }
         else
         {

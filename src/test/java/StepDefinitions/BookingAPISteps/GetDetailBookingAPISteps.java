@@ -13,6 +13,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.json.JSONObject;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
 
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class GetDetailBookingAPISteps {
         {
             JSONObject responseObject = ConvertToJson.convertResponseToJsonObject(response);
             JSONObject jsonBody = bookingModel.getBody();
-            Assert.assertTrue(JsonCompare.compareJsonObjects(jsonBody, responseObject));
+            JSONAssert.assertEquals(jsonBody, responseObject, false);
         }
     }
 }

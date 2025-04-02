@@ -10,10 +10,12 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import Model.ObjectModel;
 import org.json.JSONObject;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
 import Request.ObjectsAPI.UpdateObjectAPI;
 import Utilities.HandleJson.ConvertToJson;
 import Utilities.HandleJson.JsonParser;
+import org.testng.FileAssert;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -47,6 +49,6 @@ public class UpdateObjectAPISteps {
         Assert.assertTrue(!responseJson.isEmpty());
 
         JSONObject jsonBody = objectModel.getBody();
-        Assert.assertTrue(JsonCompare.compareJsonObjects(jsonBody, responseJson));
+        JSONAssert.assertEquals(jsonBody, responseJson, false);
     }
 }

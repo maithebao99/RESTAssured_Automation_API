@@ -15,6 +15,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.testng.Assert;
 
 import java.io.IOException;
@@ -61,7 +62,7 @@ public class AddBookingAPISteps {
             JSONObject bookingValue = responseObject.getJSONObject("booking");
             JSONObject jsonBody = bookingModel.getBody();
 
-            Assert.assertTrue(JsonCompare.compareJsonObjects(jsonBody, bookingValue));
+            JSONAssert.assertEquals(jsonBody, bookingValue, false);
         }
 
     }
