@@ -40,7 +40,7 @@ public class AddBookingAPI {
     }
 
     private void setBody(String bodycase) throws IOException {
-        File content = new File("TestSuites/data/BookingData/bodyAddBooking.json");
+        File content = new File("TestSuites/Data/BookingData/bodyAddBooking.json");
         JSONObject bodyContent = ReadFile.readFileToJsonObject(content, Charset.defaultCharset());
         JSONObject bodyObject = bodyContent.getJSONObject(bodycase);
         if (!bodyObject.isEmpty())

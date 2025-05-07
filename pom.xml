@@ -74,6 +74,12 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>5.7.0</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
@@ -99,4 +105,6 @@
         </dependency>
 
     </dependencies>
+
+
 </project>

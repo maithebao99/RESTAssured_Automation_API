@@ -7,7 +7,11 @@ import org.junit.runner.RunWith;
         features = "TestSuites/API",  // Vị trí các tệp .feature
         glue = "StepDefinitions",                  // Vị trí các bước kiểm thử (step definitions)
         tags = "@RegressionTest",
-        plugin = {"pretty", "html:target/cucumber-report.html"} // Các plugin để tạo báo cáo
+        plugin = {
+                    "pretty",
+                    "html:target/cucumber-reports",
+                    "json:target/cucumber.json",
+        } // Các plugin để tạo báo cáo
 
 )
 public class TestRunner {

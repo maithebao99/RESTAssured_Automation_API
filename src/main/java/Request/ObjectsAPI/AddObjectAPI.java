@@ -34,7 +34,7 @@ public class AddObjectAPI {
     private void setBody(String caseBody) throws IOException
     {
         //Get json file from path file
-        File file = new File("TestSuites/data/ObjectsData/bodyAddObject.json");
+        File file = new File("TestSuites/Data/ObjectsData/bodyAddObject.json");
         //Handle to Json String
         JSONObject jsonObject = ReadFile.readFileToJsonObject(file, Charset.defaultCharset());
 
