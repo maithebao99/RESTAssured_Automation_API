@@ -1,0 +1,50 @@
+2025-06-22 20:16:41 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:16:41 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'fullValidData': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:16:41 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: fullValidData
+2025-06-22 20:16:41 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: fullValidData
+2025-06-22 20:16:43 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+{
+    "bookingid": 3054,
+    "booking": {
+        "firstname": "Jim",
+        "lastname": "Brown",
+        "totalprice": 111,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": "Breakfast"
+    }
+}
+2025-06-22 20:16:43 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Booking created successfully with ID: 3054
+2025-06-22 20:16:43 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:16:43 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'firstnameEmptyString': {"firstname":"","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:16:43 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: firstnameEmptyString
+2025-06-22 20:16:43 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: firstnameEmptyString
+2025-06-22 20:16:45 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+{
+    "bookingid": 3071,
+    "booking": {
+        "firstname": "",
+        "lastname": "Brown",
+        "totalprice": 111,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": "Breakfast"
+    }
+}
+2025-06-22 20:16:45 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Booking created successfully with ID: 3071
+2025-06-22 20:16:45 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:16:45 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'firstnameNull': {"firstname":null,"additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:16:45 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: firstnameNull
+2025-06-22 20:16:45 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: firstnameNull
+2025-06-22 20:16:46 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+Internal Server Error
+2025-06-22 20:16:46 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:16:46 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'lastnameNull': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":null}
+2025-06-22 20:16:46 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: lastnameNull
+2025-06-22 20:16:46 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: lastnameNull

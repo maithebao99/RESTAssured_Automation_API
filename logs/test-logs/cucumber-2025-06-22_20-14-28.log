@@ -1,0 +1,357 @@
+2025-06-22 20:14:29 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:29 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'fullValidData': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:14:29 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: fullValidData
+2025-06-22 20:14:29 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: fullValidData
+2025-06-22 20:14:31 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+{
+    "bookingid": 1928,
+    "booking": {
+        "firstname": "Jim",
+        "lastname": "Brown",
+        "totalprice": 111,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": "Breakfast"
+    }
+}
+2025-06-22 20:14:31 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Booking created successfully with ID: 1928
+2025-06-22 20:14:31 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:31 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'firstnameEmptyString': {"firstname":"","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:14:31 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: firstnameEmptyString
+2025-06-22 20:14:31 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: firstnameEmptyString
+2025-06-22 20:14:32 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+{
+    "bookingid": 1936,
+    "booking": {
+        "firstname": "",
+        "lastname": "Brown",
+        "totalprice": 111,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": "Breakfast"
+    }
+}
+2025-06-22 20:14:32 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Booking created successfully with ID: 1936
+2025-06-22 20:14:32 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:32 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'firstnameNull': {"firstname":null,"additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:14:32 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: firstnameNull
+2025-06-22 20:14:32 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: firstnameNull
+2025-06-22 20:14:33 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+Internal Server Error
+2025-06-22 20:14:33 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:33 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'lastnameNull': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":null}
+2025-06-22 20:14:33 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: lastnameNull
+2025-06-22 20:14:33 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: lastnameNull
+2025-06-22 20:14:35 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+Internal Server Error
+2025-06-22 20:14:35 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:35 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'lastnameEmptyString': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":""}
+2025-06-22 20:14:35 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: lastnameEmptyString
+2025-06-22 20:14:35 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: lastnameEmptyString
+2025-06-22 20:14:36 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+{
+    "bookingid": 1976,
+    "booking": {
+        "firstname": "Jim",
+        "lastname": "",
+        "totalprice": 111,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": "Breakfast"
+    }
+}
+2025-06-22 20:14:36 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Booking created successfully with ID: 1976
+2025-06-22 20:14:36 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:36 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'totalpriceIs0': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":0,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:14:36 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: totalpriceIs0
+2025-06-22 20:14:36 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: totalpriceIs0
+2025-06-22 20:14:38 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+{
+    "bookingid": 1984,
+    "booking": {
+        "firstname": "Jim",
+        "lastname": "Brown",
+        "totalprice": 0,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": "Breakfast"
+    }
+}
+2025-06-22 20:14:38 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Booking created successfully with ID: 1984
+2025-06-22 20:14:38 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:38 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'totalpriceNull': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":null,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:14:38 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: totalpriceNull
+2025-06-22 20:14:38 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: totalpriceNull
+2025-06-22 20:14:39 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+Internal Server Error
+2025-06-22 20:14:39 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:39 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'depositpaidFalse': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":false,"lastname":"Brown"}
+2025-06-22 20:14:39 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: depositpaidFalse
+2025-06-22 20:14:39 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: depositpaidFalse
+2025-06-22 20:14:41 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+{
+    "bookingid": 2014,
+    "booking": {
+        "firstname": "Jim",
+        "lastname": "Brown",
+        "totalprice": 111,
+        "depositpaid": false,
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": "Breakfast"
+    }
+}
+2025-06-22 20:14:41 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Booking created successfully with ID: 2014
+2025-06-22 20:14:41 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:41 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'depositpaidNull': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":null,"lastname":"Brown"}
+2025-06-22 20:14:41 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: depositpaidNull
+2025-06-22 20:14:41 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: depositpaidNull
+2025-06-22 20:14:42 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+Internal Server Error
+2025-06-22 20:14:42 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:42 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'bookingdatesNull': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":null,"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:14:42 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: bookingdatesNull
+2025-06-22 20:14:42 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: bookingdatesNull
+2025-06-22 20:14:43 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+Internal Server Error
+2025-06-22 20:14:43 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:43 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'checkinNull': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":null,"checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:14:43 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: checkinNull
+2025-06-22 20:14:43 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: checkinNull
+2025-06-22 20:14:45 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+Internal Server Error
+2025-06-22 20:14:45 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:45 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'checkoutNull': {"firstname":"Jim","additionalneeds":"Breakfast","bookingdates":{"checkin":"2018-01-01","checkout":null},"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:14:45 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: checkoutNull
+2025-06-22 20:14:45 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: checkoutNull
+2025-06-22 20:14:46 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+Internal Server Error
+2025-06-22 20:14:46 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:46 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'addtionalneedsEmptyString': {"firstname":"Jim","additionalneeds":"","bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:14:46 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: addtionalneedsEmptyString
+2025-06-22 20:14:46 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: addtionalneedsEmptyString
+2025-06-22 20:14:48 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+{
+    "bookingid": 2069,
+    "booking": {
+        "firstname": "Jim",
+        "lastname": "Brown",
+        "totalprice": 111,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": ""
+    }
+}
+2025-06-22 20:14:48 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Booking created successfully with ID: 2069
+2025-06-22 20:14:48 [main] INFO  Request.BookingAPI.AddBookingAPI - Reading JSON file for booking body from: TestSuites/Data/BookingData/bodyAddBooking.json
+2025-06-22 20:14:48 [main] INFO  Request.BookingAPI.AddBookingAPI - Extracted body for case 'addtionalneedsNull': {"firstname":"Jim","additionalneeds":null,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"totalprice":111,"depositpaid":true,"lastname":"Brown"}
+2025-06-22 20:14:48 [main] INFO  Request.BookingAPI.AddBookingAPI - Initializing AddBookingAPI request with case: addtionalneedsNull
+2025-06-22 20:14:48 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Initialized Add Booking request with body case: addtionalneedsNull
+2025-06-22 20:14:49 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Received response:
+{
+    "bookingid": 2086,
+    "booking": {
+        "firstname": "Jim",
+        "lastname": "Brown",
+        "totalprice": 111,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": null
+    }
+}
+2025-06-22 20:14:49 [main] INFO  S.BookingAPISteps.AddBookingAPISteps - Booking created successfully with ID: 2086
+2025-06-22 20:14:49 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Reading request body from file: TestSuites/Data/ObjectsData/bodyAddObject.json
+2025-06-22 20:14:49 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Prepared request body for case 'HappyCase': {"data":{"year":2021,"price":1849.99,"CPU model":"Snap Dragon gen 2","Hard disk size":"1 TB"},"name":"Iphone 16 Pro Max"}
+2025-06-22 20:14:49 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Initializing AddObjectAPI request for case: HappyCase
+2025-06-22 20:14:49 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Request initialized for case: HappyCase
+2025-06-22 20:14:50 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Response received:
+{
+    "id": "ff8081819782e69e019797c6fd9b397a",
+    "name": "Iphone 16 Pro Max",
+    "createdAt": "2025-06-22T13:14:50.139+00:00",
+    "data": {
+        "year": 2021,
+        "price": 1849.99,
+        "CPU model": "Snap Dragon gen 2",
+        "Hard disk size": "1 TB"
+    }
+}
+2025-06-22 20:14:50 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Object created successfully with ID: ff8081819782e69e019797c6fd9b397a
+2025-06-22 20:14:50 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Reading request body from file: TestSuites/Data/ObjectsData/bodyAddObject.json
+2025-06-22 20:14:50 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Prepared request body for case 'MissingName': {"data":{"Generation":"4th","Price":"519.99","Capacity":"256 GB"}}
+2025-06-22 20:14:50 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Initializing AddObjectAPI request for case: MissingName
+2025-06-22 20:14:50 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Request initialized for case: MissingName
+2025-06-22 20:14:50 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Response received:
+{
+    "id": "ff8081819782e69e019797c6fed9397b",
+    "name": null,
+    "createdAt": "2025-06-22T13:14:50.458+00:00",
+    "data": {
+        "Generation": "4th",
+        "Price": "519.99",
+        "Capacity": "256 GB"
+    }
+}
+2025-06-22 20:14:50 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Object created successfully with ID: ff8081819782e69e019797c6fed9397b
+2025-06-22 20:14:50 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Reading request body from file: TestSuites/Data/ObjectsData/bodyAddObject.json
+2025-06-22 20:14:50 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Prepared request body for case 'MissingData': {"name":"Samsung S25"}
+2025-06-22 20:14:50 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Initializing AddObjectAPI request for case: MissingData
+2025-06-22 20:14:50 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Request initialized for case: MissingData
+2025-06-22 20:14:50 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Response received:
+{
+    "id": "ff8081819782e69e019797c70025397c",
+    "name": "Samsung S25",
+    "createdAt": "2025-06-22T13:14:50.789+00:00",
+    "data": null
+}
+2025-06-22 20:14:50 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Object created successfully with ID: ff8081819782e69e019797c70025397c
+2025-06-22 20:14:50 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Reading request body from file: TestSuites/Data/ObjectsData/bodyAddObject.json
+2025-06-22 20:14:50 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Prepared request body for case 'ValueDataRandomKey': {"data":{"chip":"AMD","price":1999,"description":"ssd 512 GB"},"name":"Samsung S20 Ultra"}
+2025-06-22 20:14:50 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Initializing AddObjectAPI request for case: ValueDataRandomKey
+2025-06-22 20:14:50 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Request initialized for case: ValueDataRandomKey
+2025-06-22 20:14:51 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Response received:
+{
+    "id": "ff8081819782e69e019797c70167397d",
+    "name": "Samsung S20 Ultra",
+    "createdAt": "2025-06-22T13:14:51.111+00:00",
+    "data": {
+        "chip": "AMD",
+        "price": 1999,
+        "description": "ssd 512 GB"
+    }
+}
+2025-06-22 20:14:51 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Object created successfully with ID: ff8081819782e69e019797c70167397d
+2025-06-22 20:14:51 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Reading request body from file: TestSuites/Data/ObjectsData/bodyAddObject.json
+2025-06-22 20:14:51 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Prepared request body for case 'HappyCase': {"data":{"year":2021,"price":1849.99,"CPU model":"Snap Dragon gen 2","Hard disk size":"1 TB"},"name":"Iphone 16 Pro Max"}
+2025-06-22 20:14:51 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Initializing AddObjectAPI request for case: HappyCase
+2025-06-22 20:14:51 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Request initialized for case: HappyCase
+2025-06-22 20:14:51 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Response received:
+{
+    "id": "ff8081819782e69e019797c702a3397e",
+    "name": "Iphone 16 Pro Max",
+    "createdAt": "2025-06-22T13:14:51.427+00:00",
+    "data": {
+        "year": 2021,
+        "price": 1849.99,
+        "CPU model": "Snap Dragon gen 2",
+        "Hard disk size": "1 TB"
+    }
+}
+2025-06-22 20:14:51 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Object created successfully with ID: ff8081819782e69e019797c702a3397e
+2025-06-22 20:14:51 [main] INFO  Request.ObjectsAPI.DeleteObjectAPI - Building DELETE request for object ID: ff8081819782e69e019797c702a3397e
+2025-06-22 20:14:51 [main] INFO  S.O.DeleteObjectAPISteps - Response for valid ID:
+{
+    "message": "Object with id = ff8081819782e69e019797c702a3397e has been deleted."
+}
+2025-06-22 20:14:51 [main] INFO  S.O.DeleteObjectAPISteps - Object successfully deleted.
+2025-06-22 20:14:51 [main] INFO  Request.ObjectsAPI.GetObjectAPI - Building GET request for object ID: ff8081819782e69e019797c702a3397e
+2025-06-22 20:14:52 [main] INFO  S.ObjectsAPISteps.GetObjectAPISteps - Response for existing ID:
+[
+    
+]
+2025-06-22 20:14:52 [main] INFO  Request.ObjectsAPI.DeleteObjectAPI - Building DELETE request for object ID: gw345t34v54tvb324t32b4v5t
+2025-06-22 20:14:52 [main] INFO  S.O.DeleteObjectAPISteps - Response for non-existing ID:
+{
+    "error": "Object with id = gw345t34v54tvb324t32b4v5t doesn't exist."
+}
+2025-06-22 20:14:52 [main] INFO  S.O.DeleteObjectAPISteps - Object not found as expected.
+2025-06-22 20:14:52 [main] INFO  Request.ObjectsAPI.GetObjectAPI - Building GET request for object ID: gw345t34v54tvb324t32b4v5t
+2025-06-22 20:14:52 [main] INFO  S.ObjectsAPISteps.GetObjectAPISteps - Response for invalid ID:
+[
+    
+]
+2025-06-22 20:14:52 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Reading request body from file: TestSuites/Data/ObjectsData/bodyAddObject.json
+2025-06-22 20:14:52 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Prepared request body for case 'HappyCase': {"data":{"year":2021,"price":1849.99,"CPU model":"Snap Dragon gen 2","Hard disk size":"1 TB"},"name":"Iphone 16 Pro Max"}
+2025-06-22 20:14:52 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Initializing AddObjectAPI request for case: HappyCase
+2025-06-22 20:14:52 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Request initialized for case: HappyCase
+2025-06-22 20:14:52 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Response received:
+{
+    "id": "ff8081819782e69e019797c708d4397f",
+    "name": "Iphone 16 Pro Max",
+    "createdAt": "2025-06-22T13:14:53.012+00:00",
+    "data": {
+        "year": 2021,
+        "price": 1849.99,
+        "CPU model": "Snap Dragon gen 2",
+        "Hard disk size": "1 TB"
+    }
+}
+2025-06-22 20:14:52 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Object created successfully with ID: ff8081819782e69e019797c708d4397f
+2025-06-22 20:14:52 [main] INFO  Request.ObjectsAPI.GetObjectAPI - Building GET request for object ID: ff8081819782e69e019797c708d4397f
+2025-06-22 20:14:53 [main] INFO  S.ObjectsAPISteps.GetObjectAPISteps - Response for existing ID:
+[
+    {
+        "id": "ff8081819782e69e019797c708d4397f",
+        "name": "Iphone 16 Pro Max",
+        "data": {
+            "year": 2021,
+            "price": 1849.99,
+            "CPU model": "Snap Dragon gen 2",
+            "Hard disk size": "1 TB"
+        }
+    }
+]
+2025-06-22 20:14:53 [main] INFO  S.ObjectsAPISteps.GetObjectAPISteps - Response matches expected body.
+2025-06-22 20:14:53 [main] INFO  Request.ObjectsAPI.GetObjectAPI - Building GET request for object ID: thisidinvalid12345
+2025-06-22 20:14:53 [main] INFO  S.ObjectsAPISteps.GetObjectAPISteps - Response for invalid ID:
+[
+    
+]
+2025-06-22 20:14:53 [main] INFO  S.ObjectsAPISteps.GetObjectAPISteps - Empty response received as expected for invalid ID.
+2025-06-22 20:14:53 [main] INFO  Request.ObjectsAPI.GetObjectAPI - Building GET request for object ID: 
+2025-06-22 20:14:53 [main] INFO  S.ObjectsAPISteps.GetObjectAPISteps - Response for invalid ID:
+[
+    
+]
+2025-06-22 20:14:53 [main] INFO  S.ObjectsAPISteps.GetObjectAPISteps - Empty response received as expected for invalid ID.
+2025-06-22 20:14:53 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Reading request body from file: TestSuites/Data/ObjectsData/bodyAddObject.json
+2025-06-22 20:14:53 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Prepared request body for case 'HappyCase': {"data":{"year":2021,"price":1849.99,"CPU model":"Snap Dragon gen 2","Hard disk size":"1 TB"},"name":"Iphone 16 Pro Max"}
+2025-06-22 20:14:53 [main] INFO  Request.ObjectsAPI.AddObjectAPI - Initializing AddObjectAPI request for case: HappyCase
+2025-06-22 20:14:53 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Request initialized for case: HappyCase
+2025-06-22 20:14:54 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Response received:
+{
+    "id": "ff8081819782e69e019797c70d113980",
+    "name": "Iphone 16 Pro Max",
+    "createdAt": "2025-06-22T13:14:54.097+00:00",
+    "data": {
+        "year": 2021,
+        "price": 1849.99,
+        "CPU model": "Snap Dragon gen 2",
+        "Hard disk size": "1 TB"
+    }
+}
+2025-06-22 20:14:54 [main] INFO  S.ObjectsAPISteps.AddObjectAPISteps - Object created successfully with ID: ff8081819782e69e019797c70d113980
+2025-06-22 20:14:54 [main] INFO  Request.ObjectsAPI.UpdateObjectAPI - Preparing update request for object ID: ff8081819782e69e019797c70d113980
+2025-06-22 20:14:54 [main] INFO  S.O.UpdateObjectAPISteps - Response from update object API:
+{
+    "id": "ff8081819782e69e019797c70d113980",
+    "name": "Updated Value",
+    "updatedAt": "2025-06-22T13:14:54.442+00:00",
+    "data": {
+        "year": "Updated Value",
+        "price": "Updated Value",
+        "CPU model": "Updated Value",
+        "Hard disk size": "Updated Value"
+    }
+}
+2025-06-22 20:14:54 [main] INFO  S.O.UpdateObjectAPISteps - Response matches updated object body.

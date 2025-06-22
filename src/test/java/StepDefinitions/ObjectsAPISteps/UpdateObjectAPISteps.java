@@ -2,7 +2,7 @@ package StepDefinitions.ObjectsAPISteps;
 
 import Model.ObjectModel;
 import Request.ObjectsAPI.UpdateObjectAPI;
-import Utilities.HandleJson.ConvertToJson;
+import Utilities.JsonUtils;
 import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
@@ -63,7 +63,7 @@ public class UpdateObjectAPISteps {
                 throw new IllegalStateException("Response is null. Cannot verify.");
             }
 
-            JSONObject responseJson = ConvertToJson.convertResponseToJsonObject(response);
+            JSONObject responseJson = JsonUtils.convertResponseToJsonObject(response);
             Assert.assertFalse(responseJson.isEmpty(), "Response JSON is empty.");
 
             JSONObject expectedBody = objectModel.getBody();
