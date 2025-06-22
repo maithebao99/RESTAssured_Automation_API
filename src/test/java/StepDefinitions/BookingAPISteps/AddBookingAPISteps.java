@@ -2,7 +2,7 @@ package StepDefinitions.BookingAPISteps;
 
 import Model.BookingModel;
 import Request.BookingAPI.AddBookingAPI;
-import Utilities.HandleJson.ConvertToJson;
+import Utilities.JsonUtils;
 import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
@@ -59,7 +59,7 @@ public class AddBookingAPISteps {
                     "Expected status code " + statusCode + " but got " + response.statusCode());
 
             if (response.statusCode() == StatusCodeRequest.statusCodeSuccess) {
-                JSONObject responseObject = ConvertToJson.convertResponseToJsonObject(response);
+                JSONObject responseObject = JsonUtils.convertResponseToJsonObject(response);
                 int bookingID = responseObject.getInt("bookingid");
                 bookingModel.setBookingID(bookingID);
 

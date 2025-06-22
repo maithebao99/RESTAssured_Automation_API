@@ -1,4 +1,4 @@
-package Utilities.HandleJson;
+package Utilities;
 
 import io.cucumber.guice.ScenarioScoped;
 import io.restassured.response.Response;
@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 @ScenarioScoped
-public class ConvertToJson {
+public class JsonUtils {
 
     //Convert response to json object
     public static JSONObject convertResponseToJsonObject(Response response)

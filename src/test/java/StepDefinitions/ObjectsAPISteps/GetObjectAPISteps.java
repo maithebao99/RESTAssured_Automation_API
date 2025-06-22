@@ -2,7 +2,7 @@ package StepDefinitions.ObjectsAPISteps;
 
 import Model.ObjectModel;
 import Request.ObjectsAPI.GetObjectAPI;
-import Utilities.HandleJson.ConvertToJson;
+import Utilities.JsonUtils;
 import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
@@ -52,7 +52,7 @@ public class GetObjectAPISteps {
                 throw new IllegalStateException("Response is null. Cannot verify response.");
             }
 
-            JSONArray jsonArrayResponse = ConvertToJson.convertResponseToJsonArray(response);
+            JSONArray jsonArrayResponse = JsonUtils.convertResponseToJsonArray(response);
             Assert.assertNotNull(jsonArrayResponse, "Response array is null.");
 
             if (!jsonArrayResponse.isEmpty()) {
@@ -95,7 +95,7 @@ public class GetObjectAPISteps {
                 throw new IllegalStateException("Response is null. Cannot verify response.");
             }
 
-            JSONArray jsonArrayResponse = ConvertToJson.convertResponseToJsonArray(response);
+            JSONArray jsonArrayResponse = JsonUtils.convertResponseToJsonArray(response);
             Assert.assertNotNull(jsonArrayResponse, "Response array is null.");
 
             if (jsonArrayResponse.isEmpty()) {

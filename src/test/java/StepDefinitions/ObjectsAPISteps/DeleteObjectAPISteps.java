@@ -2,7 +2,7 @@ package StepDefinitions.ObjectsAPISteps;
 
 import Model.ObjectModel;
 import Request.ObjectsAPI.DeleteObjectAPI;
-import Utilities.HandleJson.ConvertToJson;
+import Utilities.JsonUtils;
 import Utilities.StatusCodeRequest;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
@@ -66,7 +66,7 @@ public class DeleteObjectAPISteps {
                 throw new IllegalStateException("Response is null. Cannot verify response.");
             }
 
-            JSONObject jsonResponse = ConvertToJson.convertResponseToJsonObject(response);
+            JSONObject jsonResponse = JsonUtils.convertResponseToJsonObject(response);
             Assert.assertFalse(jsonResponse.isEmpty(), "JSON response is empty.");
 
             int statusCode = response.statusCode();

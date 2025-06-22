@@ -8,11 +8,9 @@ import org.junit.runner.RunWith;
         glue = "StepDefinitions",                  // Vị trí các bước kiểm thử (step definitions)
         tags = "@RegressionTest",
         plugin = {
-                    "pretty",
-                    "html:target/cucumber-reports",
-                    "json:target/cucumber.json",
+                "pretty",
+                "html:reports/cucumber-report",   //HTML report
         }
-
 )
 public class TestRunner {
 

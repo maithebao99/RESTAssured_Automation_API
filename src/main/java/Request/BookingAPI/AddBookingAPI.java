@@ -2,7 +2,6 @@ package Request.BookingAPI;
 
 import Model.BookingModel;
 import Utilities.FileUtils;
-import Utilities.HandleJson.JsonParser;
 import Utilities.Path;
 import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
@@ -26,9 +25,6 @@ public class AddBookingAPI {
 
     @Inject
     private Path path;
-
-    @Inject
-    private JsonParser jsonParser;
 
     private Map<String, String> createHeader() {
         Map<String, String> header = new HashMap<>();
