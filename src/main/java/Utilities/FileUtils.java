@@ -1,4 +1,4 @@
-package Utilities.HandleFile;
+package Utilities;
 
 import io.cucumber.guice.ScenarioScoped;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 
 @ScenarioScoped
-public class ReadFile {
+public class FileUtils {
     //Read json from Json Object to String
     public static String readFileToString(File file, Charset charset) throws IOException {
         return new String(Files.readAllBytes(file.toPath()), charset);
