@@ -7,41 +7,46 @@ import com.google.inject.Inject;
 import io.cucumber.guice.ScenarioScoped;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @ScenarioScoped
 public class GetDetailBookingAPI {
 
-    private Map<String, String> header;
-
-    private RequestSpecification request;
+    @Inject
+    private Path path;
 
     @Inject
-    Path path;
+    private StatusCodeRequest statusCodeRequest;
 
     @Inject
-    StatusCodeRequest statusCodeRequest;
+    private BookingModel bookingModel;
 
-    @Inject
-    BookingModel bookingModel;
+    public RequestSpecification initRequestGetDetailBooking() {
+        try {
+            int bookingId = bookingModel.getBookingID();
+            if (bookingId <= 0) {
+                throw new IllegalArgumentException("Booking ID must be greater than 0.");
+            }
 
-    private void setHeader()
-    {
-        header = new HashMap<>();
-        header.put("Content-Type", "application/json");
-        header.put("Accept", "*/*");
-    }
+            Map<String, String> header = new HashMap<>();
+            header.put("Content-Type", "application/json");
+            header.put("Accept", "*/*");
 
-    public RequestSpecification initRequestGetDetailBooking()
-    {
-        setHeader();
-        request = new RequestSpecBuilder()
-                .setBaseUri(Path.baseBookingURL)
-                .setBasePath(Path.pathBooking+bookingModel.getBookingID())
-                .addHeaders(header)
-                .build();
-        return request;
+            log.info("Initializing GET detail booking request for booking ID: {}", bookingId);
+
+            return new RequestSpecBuilder()
+                    .setBaseUri(Path.baseBookingURL)
+                    .setBasePath(Path.pathBooking + bookingId)
+                    .addHeaders(header)
+                    .build();
+
+        } catch (Exception e) {
+            log.error("Failed to initialize GET detail booking request: {}", e.getMessage(), e);
+            throw new RuntimeException("Failed to build request for GetDetailBookingAPI.");
+        }
     }
 }

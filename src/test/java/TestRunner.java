@@ -11,9 +11,9 @@ import org.junit.runner.RunWith;
                     "pretty",
                     "html:target/cucumber-reports",
                     "json:target/cucumber.json",
-        } // Các plugin để tạo báo cáo
+        }
 
 )
 public class TestRunner {
-    // Test Runner này sẽ tự động tìm kiếm các kịch bản trong thư mục "features" và ánh xạ chúng tới các phương thức trong "StepDefinitions".
+
 }
