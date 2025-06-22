@@ -1,10 +1,9 @@
 package StepDefinitions;
 
 import io.cucumber.java.Before;
-import org.apache.commons.io.FileUtils;
 import utils.LogDirectoryInitializer;
+import utils.ReportFolderManager;
 
-import java.io.File;
 import java.io.IOException;
 
 public class Hooks {
@@ -12,21 +11,12 @@ public class Hooks {
     private static boolean initialized = false;
 
     @Before(order = 0)
-    public void setupLogOnce() throws IOException {
+    public void setup() throws IOException {
         if (!initialized) {
-            LogDirectoryInitializer.initLogFilePath();
-//            cleanReportDir();
+            LogDirectoryInitializer.initLogFilePath(); // add file log to folder log
+            ReportFolderManager.cleanReportFolder(); //clean report folder
             initialized = true;
         }
     }
-
-    //Clean file report when run cucumber
-//    private void cleanReportDir() throws IOException {
-//        File reportDir = new File("reports");
-//        if (reportDir.exists()) {
-//            FileUtils.deleteDirectory(reportDir);
-//            System.out.println("Report folder cleaned: reports/");
-//        }
-//    }
 
 }
